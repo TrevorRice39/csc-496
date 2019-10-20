@@ -3,20 +3,34 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #98D2EB;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .App-link {
   color: #09d3ac;
+}
+body {
+  min-height: 80vh;
+  background-color: #E1F2FE;
+}
+footer {
+  background-color: #98D2EB;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  font-size: calc(2px + 2vmin);
+  color:black;
 }
