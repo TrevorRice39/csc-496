@@ -19,6 +19,9 @@ class App extends Component {
           <div>
             <h12>{r.title}</h12>
             <div dangerouslySetInnerHTML={{ __html: r.body }} />
+            <img src = {"http://gtest.dev.wwbtc.com" + r.field_images.substring(0, r.field_images.indexOf(','))}></img>
+            
+            <div> {r.field_images.substring(0, r.field_images.indexOf(','))}</div>
             </div>
           )}
         {/* <header className="App-header">
