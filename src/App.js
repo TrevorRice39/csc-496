@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   switchPage(pageName) {
-    this.setState({homepage: pageName == "homepage"});
+    this.setState({homepage: pageName === "homepage"});
   }
   render() {
     const {recipes, homepage} = this.state;
@@ -25,13 +25,15 @@ class App extends Component {
         </header>
         <nav>
          <Button className = "" onClick = {() => this.switchPage("homepage")} text = "Homepage"/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          <Button className = "" onClick = {() => this.switchPage("recipes")} text = "Recipes"/>
         </nav>
         <body>
           
         {homepage?
         <Homepage recipes = {recipes}/>
-        : <h1>recipes go here</h1>
+        :
+        <RecipePage recipes = {recipes}/>
         }
         </body>
         <footer>
@@ -102,9 +104,7 @@ class RecipeSummaries extends Component {
       <div>
         <h1>A few recipes!</h1>
         {recipes.map(recipe =>
-
           <div>
-            
           {recipe.title}
           :&nbsp;
           <div dangerouslySetInnerHTML={{ __html: recipe.field_summary }} />
@@ -124,6 +124,64 @@ class Button extends Component {
       onClick = {onClick}
       className = {className}
       >{text}</button>
+    )
+  }
+}
+
+class RecipePage extends Component {
+
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      recipeIndex: 0,
+    }
+
+    this.previousRecipe = this.previousRecipe.bind(this);
+    this.nextRecipe = this.nextRecipe.bind(this);
+  }
+
+  nextRecipe() {
+    const {recipeIndex} = this.state;
+    const {recipes} = this.props;
+    if (recipeIndex < recipes.length - 1) {
+      this.setState({recipeIndex: recipeIndex+1})
+    }
+  }
+
+  previousRecipe() {
+    const {recipeIndex} = this.state;
+    if (recipeIndex > 0) {
+      this.setState({recipeIndex: recipeIndex-1})
+    }
+  }
+  render() {
+    const {recipeIndex} = this.state;
+    const {recipes} = this.props;
+    return (
+      <div>
+      <Recipe recipe = {recipes[recipeIndex]}/>
+      <Button className = "" onClick = {() => this.previousRecipe()} text = "<< Previous"/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <Button className = "" onClick = {() => this.nextRecipe()} text = "Next >>"/>
+      </div>
+    )
+  }
+}
+
+class Recipe extends Component {
+  
+  render() {
+    const {recipe} = this.props;
+    return (
+      <div>
+        {recipe != "undefined"?
+        <body>
+          <h1>{recipe.title}</h1> 
+        </body>
+          : <div></div>
+          }
+      </div>
     )
   }
 }
