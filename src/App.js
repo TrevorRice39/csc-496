@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import logo from "./recipes_logo.jpg";
 import "./App.css";
 
 class App extends Component {
@@ -171,13 +170,50 @@ class RecipePage extends Component {
 
 class Recipe extends Component {
   
+  constructor(props) {
+    super(props);
+
+    this.getImages = this.getImages.bind(this);
+  }
+
+  getImages() {
+    const {recipe} = this.props;
+    var urls_string = recipe.field_images;
+    var urls = [];
+
+    var commaIndex = urls_string.indexOf(',');
+    while (commaIndex != -1) {
+      var url = urls_string.substring(0, commaIndex);
+      urls.push(url);
+      urls_string = url;
+      commaIndex = urls_string.indexOf(',');
+    }
+
+    if (urls_string.length > 0) {
+      urls.push(urls_string);
+    }
+    return urls;
+  }
   render() {
     const {recipe} = this.props;
+    const images = this.getImages();
+    console.log(images);
     return (
       <div>
-        {recipe != "undefined"?
+        {typeof recipe != 'undefined'?
         <body>
           <h1>{recipe.title}</h1> 
+          {typeof images !== 'undefined'?
+            images.map(url =>
+              <img src = {"http://gtest.dev.wwbtc.com" + url}></img>
+            )
+            : <div></div>
+          }
+          <h2>Preparation</h2>
+          <p dangerouslySetInnerHTML={{ __html: recipe.body}}></p>
+          <h2>Ingredients</h2>
+          <p>{recipe.field_ingredients}</p>
+          
         </body>
           : <div></div>
           }
@@ -185,13 +221,5 @@ class Recipe extends Component {
     )
   }
 }
-/*
-{recipes.map(recipe =>
-        <div>
-          <h12>{recipe.title}</h12>
-          <div dangerouslySetInnerHTML={{ __html: recipe.body }} />
-          <img src = {"http://gtest.dev.wwbtc.com" + recipe.field_images.substring(0, recipe.field_images.indexOf(','))}></img>
-          </div>
-        )} 
-*/
+
 export default App;
