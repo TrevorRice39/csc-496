@@ -10,6 +10,11 @@ class App extends Component {
       recipes: [],
       homepage: true,
     };
+    this.switchPage = this.switchPage.bind(this);
+  }
+
+  switchPage(pageName) {
+    this.setState({homepage: pageName == "homepage"});
   }
   render() {
     const {recipes, homepage} = this.state;
@@ -19,18 +24,14 @@ class App extends Component {
           Trevor's Recipes
         </header>
         <nav>
-          {/* homepage button
-              recipe button
-          */}
+         <Button className = "" onClick = {() => this.switchPage("homepage")} text = "Homepage"/>
+         <Button className = "" onClick = {() => this.switchPage("recipes")} text = "Recipes"/>
         </nav>
         <body>
-          <h1>Homepage</h1>
+          
         {homepage?
-        <div>
-        <MainContent/>
-        <RecipeSummaries recipes = {recipes}/>
-        </div>
-        : <h1>boy this the recipe page</h1>
+        <Homepage recipes = {recipes}/>
+        : <h1>recipes go here</h1>
         }
         </body>
         <footer>
@@ -48,6 +49,19 @@ class App extends Component {
       .then(result => this.setState({recipes: result, loading: false}))
       .catch(error => console.log(error));
 
+  }
+}
+
+class Homepage extends Component {
+  render() {
+    const {recipes} = this.props;
+    return (
+      <div>
+      <h1>Homepage</h1>
+        <MainContent/>
+        <RecipeSummaries recipes = {recipes}/>
+      </div>
+    )
   }
 }
 
@@ -101,6 +115,18 @@ class RecipeSummaries extends Component {
   }
 }
 
+class Button extends Component {
+  render() {
+    const {className, onClick, text} = this.props;
+
+    return (
+      <button
+      onClick = {onClick}
+      className = {className}
+      >{text}</button>
+    )
+  }
+}
 /*
 {recipes.map(recipe =>
         <div>
