@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "./recipes_logo.jpg";
+//import logo from "./recipes_logo.jpg";
 import "./App.css";
 
 class App extends Component {
@@ -7,50 +7,107 @@ class App extends Component {
     super(props);
 
     this.state = {
-      result: [],
+      recipes: [],
+      homepage: true,
     };
   }
   render() {
-    const {result} = this.state;
-    console.log(result);
+    const {recipes, homepage} = this.state;
     return (
       <div className="App">
-        {result.map(r =>
-          <div>
-            <h12>{r.title}</h12>
-            <div dangerouslySetInnerHTML={{ __html: r.body }} />
-            <img src = {"http://gtest.dev.wwbtc.com" + r.field_images.substring(0, r.field_images.indexOf(','))}></img>
-            
-            <div> {r.field_images.substring(0, r.field_images.indexOf(','))}</div>
-            </div>
-          )}
-        {/* <header className="App-header">
-          <div>CSC 496 Recipes</div>
+        <header className="App-header">
+          Trevor's Recipes
         </header>
+        <nav>
+          {/* homepage button
+              recipe button
+          */}
+        </nav>
         <body>
-        
+          <h1>Homepage</h1>
+        {homepage?
+        <div>
+        <MainContent/>
+        <RecipeSummaries recipes = {recipes}/>
+        </div>
+        : <h1>boy this the recipe page</h1>
+        }
         </body>
         <footer>
           Trevor Rice
           <br></br>
-          CSC 499
-          <br></br>
-          trevor_rice39@mymail.eku
-          <a href="https//:github.com/TrevorRice39">Github</a>
-        </footer> */}
+          CSC 496
+        </footer>
       </div>
     );
   }
 
-  setResult(result) {
-    this.setState({result : result});
-  }
   componentDidMount() {
     fetch("http://gtest.dev.wwbtc.com/json/rec")
       .then(response => response.json())
-      .then(result => this.setResult(result))
+      .then(result => this.setState({recipes: result, loading: false}))
+      .catch(error => console.log(error));
+
+  }
+}
+
+class MainContent extends Component {
+  
+  constructor(props) {
+    super(props);
+
+    this.state = { 
+      homepage: [], 
+    }
+  }
+  render() {
+    const {homepage} = this.state;
+    return (
+      <div>
+        {homepage.map(res =>
+          <div dangerouslySetInnerHTML={{ __html: res.body }} />
+          )}
+        </div>
+    )
+  }
+  componentDidMount() {
+    fetch("http://gtest.dev.wwbtc.com/json/page?_format=json")
+      .then(response => response.json())
+      .then(result => this.setState({homepage: result}))
       .catch(error => console.log(error));
   }
 }
 
+
+class RecipeSummaries extends Component {
+  
+  render() {
+    const {recipes} = this.props;
+    console.log(recipes);
+    return (
+      <div>
+        <h1>A few recipes!</h1>
+        {recipes.map(recipe =>
+
+          <div>
+            
+          {recipe.title}
+          :&nbsp;
+          <div dangerouslySetInnerHTML={{ __html: recipe.field_summary }} />
+          </div>
+          )}
+      </div>
+    )
+  }
+}
+
+/*
+{recipes.map(recipe =>
+        <div>
+          <h12>{recipe.title}</h12>
+          <div dangerouslySetInnerHTML={{ __html: recipe.body }} />
+          <img src = {"http://gtest.dev.wwbtc.com" + recipe.field_images.substring(0, recipe.field_images.indexOf(','))}></img>
+          </div>
+        )} 
+*/
 export default App;
