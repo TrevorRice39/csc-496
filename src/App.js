@@ -20,15 +20,16 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          Trevor's Recipes
-        </header>
-        <nav>
-         <Button className = "" onClick = {() => this.switchPage("homepage")} text = "Homepage"/>
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         <Button className = "" onClick = {() => this.switchPage("recipes")} text = "Recipes"/>
-        </nav>
-        <body>
           
+          <div>
+          Recipes Bazaar
+          &nbsp;&nbsp;
+          <Button className = "nav_button" onClick = {() => this.switchPage("homepage")} text = "Homepage"/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <Button className = "nav_button" onClick = {() => this.switchPage("recipes")} text = "Recipes"/>
+         </div>
+        </header>
+        <body>
         {homepage?
         <Homepage recipes = {recipes}/>
         :
@@ -98,7 +99,6 @@ class RecipeSummaries extends Component {
   
   render() {
     const {recipes} = this.props;
-    console.log(recipes);
     return (
       <div>
         <h1>A few recipes!</h1>
@@ -160,9 +160,9 @@ class RecipePage extends Component {
     return (
       <div>
       <Recipe recipe = {recipes[recipeIndex]}/>
-      <Button className = "" onClick = {() => this.previousRecipe()} text = "<< Previous"/>
+      <Button className = "nav_button" onClick = {() => this.previousRecipe()} text = "<< Previous"/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <Button className = "" onClick = {() => this.nextRecipe()} text = "Next >>"/>
+      <Button className = "nav_button" onClick = {() => this.nextRecipe()} text = "Next >>"/>
       </div>
     )
   }
@@ -210,9 +210,9 @@ class Recipe extends Component {
             : <div></div>
           }
           <h2>Preparation</h2>
-          <p dangerouslySetInnerHTML={{ __html: recipe.body}}></p>
+          <p className = "recipe_para" dangerouslySetInnerHTML={{ __html: recipe.body}}></p>
           <h2>Ingredients</h2>
-          <p>{recipe.field_ingredients}</p>
+          <p className = "recipe_para">{recipe.field_ingredients}</p>
           
         </body>
           : <div></div>

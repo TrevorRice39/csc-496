@@ -1,19 +1,33 @@
 .App {
   text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif
 }
 
 .App-logo {
   height: 10vmin;
 }
 
+/*
+#EC91D8
+#FFAAEA
+#FFEED6
+#A77E58
+#FBBFCA
+*/
+
 .App-header {
-  background-color: #98D2EB;
+  background-color: #BF936B;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  text-align: left;
+  padding-left: 15px;
+  padding-top: 20px;;
+  padding-bottom: 10px;
+  
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(20px + 2vmin);
+  
   color: black;
 }
 
@@ -21,11 +35,15 @@
   color: #09d3ac;
 }
 body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: rgb(83, 80, 80);
   min-height: 80vh;
-  background-color: #E1F2FE;
+  
+  background-color: #FFEED6;
+  /* background-color: #FBBFCA; */
 }
 footer {
-  background-color: #98D2EB;
+  background-color: #A77E58;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
@@ -33,4 +51,44 @@ footer {
   justify-content: center;
   font-size: calc(2px + 2vmin);
   color:black;
+}
+
+.nav_button {
+  width: 125px;
+  outline: 0;
+  border: none;
+  font-size: 16px;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  padding: 12px 16px ;
+  border-radius: 2.5%;
+  background-color:#FFAAEA;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.nav_button::-moz-focus-inner {
+  border: 0;
+}
+.nav_button:hover {
+  border: 0;
+  border-radius: 5%;
+  background-color: #EC91D8;
+}
+
+h2 {
+  text-align: left;
+  margin: 20px;
+}
+.recipe_para {
+  text-align: left;
+  margin: 20px;
+}
+
+img {
+  padding: 15px;
+  border-radius: 8px;
+  border: rgb(204, 13, 13);
+  
+}
+img:hover {
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 10px 10px 0 rgba(0,0,0,0.19);
 }
