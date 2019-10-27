@@ -80,12 +80,18 @@ h2 {
 }
 .recipe_para {
   text-align: left;
-  margin: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+h4 {
+  text-align: left;
+  margin-left: 20px;
 }
 
 img {
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 8%;
   border: rgb(204, 13, 13);
   
 }

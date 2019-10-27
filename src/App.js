@@ -81,7 +81,7 @@ class MainContent extends Component {
     return (
       <div>
         {homepage.map(res =>
-          <div dangerouslySetInnerHTML={{ __html: res.body }} />
+          <p className = "recipe_para" dangerouslySetInnerHTML={{ __html: res.body }} />
           )}
         </div>
     )
@@ -104,9 +104,8 @@ class RecipeSummaries extends Component {
         <h1>A few recipes!</h1>
         {recipes.map(recipe =>
           <div>
-          {recipe.title}
-          :&nbsp;
-          <div dangerouslySetInnerHTML={{ __html: recipe.field_summary }} />
+          <h4>{recipe.title}:</h4>
+          <p className = "recipe_para" dangerouslySetInnerHTML={{ __html: recipe.field_summary }} />
           </div>
           )}
       </div>
@@ -197,7 +196,6 @@ class Recipe extends Component {
   render() {
     const {recipe} = this.props;
     const images = this.getImages();
-    console.log(images);
     return (
       <div>
         {typeof recipe != 'undefined'?
