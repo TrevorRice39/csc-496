@@ -24,9 +24,9 @@ class App extends Component {
           <div>
           Recipes Bazaar
           &nbsp;&nbsp;
-          <Button className = "nav_button" onClick = {() => this.switchPage("homepage")} text = "Homepage"/>
+          <Button className = "nav_button bouncy" style="animation-delay:0.07s;" onClick = {() => this.switchPage("homepage")} text = "Homepage"/>
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         <Button className = "nav_button" onClick = {() => this.switchPage("recipes")} text = "Recipes"/>
+         <Button className = "nav_button bouncy" style="animation-delay:1.00s;" onClick = {() => this.switchPage("recipes")} text = "Recipes"/>
          </div>
         </header>
         <body>
