@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "./App.css";
+import './App.css';
+import { isModuleDeclaration } from "@babel/types";
 
 class App extends Component {
   constructor(props) {
@@ -219,5 +220,7 @@ class Recipe extends Component {
     )
   }
 }
-
+export {
+  Homepage,
+}
 export default App;

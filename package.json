@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "identity-obj-proxy": "^3.0.0",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0"
@@ -10,7 +12,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --config ./jest.config.json",
+    "test:watch": "npm run test -- --watch",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -27,5 +30,25 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TrevorRice39/csc-496.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TrevorRice39/csc-496/issues"
+  },
+  "homepage": "https://github.com/TrevorRice39/csc-496#readme",
+  "devDependencies": {
+    "react-test-renderer": "^16.11.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }
