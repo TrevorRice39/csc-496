@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Recipe from './Recipe/Recipe.js';
-import Button from '../../App.js';
+import {Button} from '../../App.js';
 
 class RecipePage extends Component {
 

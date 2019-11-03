@@ -5,30 +5,12 @@ class Recipe extends Component {
     constructor(props) {
       super(props);
   
-      this.getImages = this.getImages.bind(this);
+      //this.getImages = this.getImages.bind(this);
     }
   
-    getImages() {
-      const {recipe} = this.props;
-      var urls_string = recipe.field_images;
-      var urls = [];
-  
-      var commaIndex = urls_string.indexOf(',');
-      while (commaIndex != -1) {
-        var url = urls_string.substring(0, commaIndex);
-        urls.push(url);
-        urls_string = url;
-        commaIndex = urls_string.indexOf(',');
-      }
-  
-      if (urls_string.length > 0) {
-        urls.push(urls_string);
-      }
-      return urls;
-    }
     render() {
       const {recipe} = this.props;
-      const images = this.getImages();
+      const images = getImages(recipe.field_images);
       return (
         <div>
           {typeof recipe != 'undefined'?
@@ -51,5 +33,25 @@ class Recipe extends Component {
         </div>
       )
     }
-  }
+}
+const getImages = (urls_string) => {
+    var urls = [];
+
+    var blankIndex = urls_string.indexOf(' ');
+    while (blankIndex != -1) {
+      var url = urls_string.substring(0, blankIndex-1);
+      urls.push(url);
+      urls_string = urls_string.substring(blankIndex+1);
+      blankIndex = urls_string.indexOf(' ');
+    }
+
+    if (urls_string.length > 0) {
+      urls.push(urls_string);
+    }
+    console.log(urls);
+    return urls;
+}
+export {
+    getImages,
+}
 export default Recipe;
