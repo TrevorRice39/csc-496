@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import "isomorphic-fetch";
 
-import { Homepage } from './App';
+import Homepage from './components/Homepage/Homepage.js';
 import { tsExternalModuleReference } from '@babel/types';
 
 describe('Homepage', () => {
