@@ -48,7 +48,6 @@ const getImages = (urls_string) => {
     if (urls_string.length > 0) {
       urls.push(urls_string);
     }
-    console.log(urls);
     return urls;
 }
 export {

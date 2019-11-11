@@ -14,7 +14,8 @@
     "build": "react-scripts build",
     "test": "jest --config ./jest.config.json",
     "test:watch": "npm run test -- --watch",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,6 +45,9 @@
   },
   "homepage": "https://github.com/TrevorRice39/csc-496#readme",
   "devDependencies": {
+    "coveralls": "^3.0.7",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "react-test-renderer": "^16.11.0"
   },
   "jest": {
