@@ -1,3 +1,4 @@
+[![Coverage Status](https://coveralls.io/repos/github/TrevorRice39/csc-496/badge.svg?branch=master)](https://coveralls.io/github/TrevorRice39/csc-496?branch=master)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
