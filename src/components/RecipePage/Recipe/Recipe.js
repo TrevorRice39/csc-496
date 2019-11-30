@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+require('dotenv').config()
 class Recipe extends Component {
   
     constructor(props) {

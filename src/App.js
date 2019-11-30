@@ -23,7 +23,6 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          
           <div>
           Recipes Bazaar
           &nbsp;&nbsp;
@@ -49,7 +48,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("http://gtest.dev.wwbtc.com/json/rec")
+    console.log(process.env.REACT_APP_RECIPE_URL);
+    fetch(process.env.REACT_APP_RECIPE_URL)
       .then(response => response.json())
       .then(result => this.setState({recipes: result, loading: false}))
       .catch(error => console.log(error));
