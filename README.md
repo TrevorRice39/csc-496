@@ -13,7 +13,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     REACT_APP_RECIPE_URL = the_recipe_url
     REACT_APP_RECIPE_IMAGE_ROOT = the_root_of_recipe_images
     ```
-3) Run the app
+3) Install packages
+
+    ``` npm install ```
+4) Run the app
     
     ``` npm start ```
     
