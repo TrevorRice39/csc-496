@@ -34,9 +34,14 @@ class RecipePage extends Component {
       const {recipes} = this.props;
       return (
         <div>
+        
+        {recipes != undefined ?
         <Recipe recipe = {recipes[recipeIndex]}/>
+        :
+        <Recipe recipe = {undefined}/>
+        }
         <Button className = "nav_button" onClick = {() => this.previousRecipe()} text = "<< Previous"/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>       </span>
         <Button className = "nav_button" onClick = {() => this.nextRecipe()} text = "Next >>"/>
         </div>
       )

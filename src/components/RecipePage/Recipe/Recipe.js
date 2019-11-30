@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 require('dotenv').config()
+
 class Recipe extends Component {
   
     constructor(props) {
@@ -18,7 +19,7 @@ class Recipe extends Component {
             <h1>{recipe.title}</h1> 
             {typeof images !== 'undefined'?
               images.map(url =>
-                <img src = {"http://gtest.dev.wwbtc.com" + url}></img>
+                <img src = {process.env.REACT_APP_RECIPE_IMAGE_ROOT + url}></img>
               )
               : <div></div>
             }

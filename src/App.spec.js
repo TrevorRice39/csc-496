@@ -2,16 +2,35 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import "isomorphic-fetch";
 import {mount} from 'enzyme';
-import App from './App.js';
+import App, {Button} from './App.js';
 import Homepage from './components/Homepage/Homepage.js';
-import {getImages} from './components/RecipePage/Recipe/Recipe.js';
+import Recipe, {getImages} from './components/RecipePage/Recipe/Recipe.js';
+import RecipePage from './components/RecipePage/RecipePage.js';
 import { tsExternalModuleReference } from '@babel/types';
+import ShallowRenderer from 'react-test-renderer/shallow';
+
 
 
 describe('App', () => {
   it('renders the homepage', () => {
     const wrapper = mount(<App />);
     expect(wrapper.find(Homepage).length).toEqual(1);
+  });
+})
+describe('Recipe', () => {
+  it('renders the recipe page', () => {
+    // in your test:
+    const renderer = new ShallowRenderer();
+    renderer.render(<RecipePage props = {[]} />);
+    const result = renderer.getRenderOutput();
+    expect(result.type).toBe('div');
+    var expected = [
+      <Recipe recipe = {undefined}/>,
+        <Button className = "nav_button" onClick = {() => this.previousRecipe()} text = "<< Previous"/>,
+        <span>       </span>,
+        <Button className = "nav_button" onClick = {() => this.nextRecipe()} text = "Next >>"/>
+    ]
+    expect(JSON.stringify(result.props.children)).toEqual(JSON.stringify(expected))
   });
 })
 describe('Homepage', () => {

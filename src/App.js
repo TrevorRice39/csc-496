@@ -7,7 +7,6 @@ import { isModuleDeclaration } from "@babel/types";
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       recipes: [],
       homepage: true,
@@ -48,7 +47,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log(process.env.REACT_APP_RECIPE_URL);
     fetch(process.env.REACT_APP_RECIPE_URL)
       .then(response => response.json())
       .then(result => this.setState({recipes: result, loading: false}))
