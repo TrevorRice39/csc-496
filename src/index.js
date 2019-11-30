@@ -5,7 +5,7 @@ import App, {Homepage} from './App';
 import * as serviceWorker from './serviceWorker';
 import { isModuleDeclaration } from '@babel/types';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App homepage = {true}/>, document.getElementById('root'));
 
 if (module.hot) {
     module.hot.accept()

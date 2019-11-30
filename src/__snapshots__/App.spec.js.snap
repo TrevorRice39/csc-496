@@ -27,3 +27,26 @@ exports[`Homepage snapshot renders 1`] = `
   </div>
 </div>
 `;
+
+exports[`Recipe Page snapshot renders 1`] = `
+<div>
+  <div>
+    <div />
+  </div>
+  <button
+    className="nav_button"
+    onClick={[Function]}
+  >
+    &lt;&lt; Previous
+  </button>
+  <span>
+           
+  </span>
+  <button
+    className="nav_button"
+    onClick={[Function]}
+  >
+    Next &gt;&gt;
+  </button>
+</div>
+`;

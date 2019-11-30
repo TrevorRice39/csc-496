@@ -9,8 +9,9 @@ class App extends Component {
     super(props);
     this.state = {
       recipes: [],
-      homepage: true,
+      homepage: this.props.homepage,
     };
+
     this.switchPage = this.switchPage.bind(this);
   }
 
@@ -21,6 +22,7 @@ class App extends Component {
     const {recipes, homepage} = this.state;
     return (
       <div className="App">
+        <div>
         <header className="App-header">
           <div>
           Recipes Bazaar
@@ -30,18 +32,24 @@ class App extends Component {
          <Button className = "nav_button bouncy" style="animation-delay:1.00s;" onClick = {() => this.switchPage("recipes")} text = "Recipes"/>
          </div>
         </header>
+        <div>
         <body>
-        {homepage?
-        <Homepage recipes = {recipes}/>
-        :
-        <RecipePage recipes = {recipes}/>
-        }
+          {{recipes} != undefined?
+          [(homepage || homepage === undefined?
+            <Homepage recipes = {recipes}/>
+            :
+            <RecipePage recipes = {recipes}/>
+          )]:
+          <Homepage/>
+          }
         </body>
         <footer>
           Trevor Rice
           <br></br>
           CSC 496
         </footer>
+        </div>
+        </div>
       </div>
     );
   }
