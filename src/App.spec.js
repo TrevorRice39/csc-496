@@ -142,3 +142,18 @@ describe('Recipe', () => {
     })
   })
 })
+
+describe('App', () => {
+  describe('switchPage', () => {
+    it('should switch page', () => {
+      const wrapper = mount(<App homepage = {true}/>);
+      wrapper.instance().switchPage("homepage");
+      var state = wrapper.instance().state;
+      expect(JSON.stringify(state)).toEqual(JSON.stringify({recipes: [], homepage: true}));
+
+      wrapper.instance().switchPage("recipes");
+      state = wrapper.instance().state;
+      expect(JSON.stringify(state)).toEqual(JSON.stringify({recipes: [], homepage: false}));
+    })
+  })
+})
