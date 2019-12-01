@@ -60,6 +60,14 @@ describe('Recipe Page', () => {
     expect(tree).toMatchSnapshot();
   })
 })
+
+describe('Recipe component', () => {
+  test('snapshot renders', () => {
+    const component = renderer.create(<Recipe/>);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  })
+})
 describe('Recipe', () => {
   it('renders the recipe page', () => {
     const renderer = new ShallowRenderer();
