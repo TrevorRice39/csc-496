@@ -73,6 +73,7 @@ describe('Recipe', () => {
     const renderer = new ShallowRenderer();
     renderer.render(<RecipePage props = {[]} />);
     const result = renderer.getRenderOutput();
+    
     expect(result.type).toBe('div');
     var expected = [
       <Recipe recipe = {undefined}/>,
@@ -101,3 +102,43 @@ describe('Recipe', () => {
     });
   });
 });
+
+describe('Recipe', () => {
+  describe('nextRecipe', () => {
+    it('should go to next', () => {
+      const recipe  = [{title: "title", body: "body", field_images: "image1", view_node: "node", field_ingredients: "ingredient1", field_summary: "summary"},
+      {title: "title", body: "body", field_images: "image1", view_node: "node", field_ingredients: "ingredient1", field_summary: "summary"}];
+      const wrapper = mount(<RecipePage recipes = {recipe}/>);
+      
+      wrapper.instance().nextRecipe();
+      var state = wrapper.instance().state;
+      expect(JSON.stringify(state)).toEqual(JSON.stringify({recipeIndex: 1}));
+
+      wrapper.instance().nextRecipe();
+      var state = wrapper.instance().state;
+      expect(JSON.stringify(state)).toEqual(JSON.stringify({recipeIndex: 1}));
+    })
+  })
+})
+
+describe('Recipe', () => {
+  describe('nextRecipe', () => {
+    it('should go to previous', () => {
+      const recipe  = [{title: "title", body: "body", field_images: "image1", view_node: "node", field_ingredients: "ingredient1", field_summary: "summary"},
+      {title: "title", body: "body", field_images: "image1", view_node: "node", field_ingredients: "ingredient1", field_summary: "summary"}];
+      const wrapper = mount(<RecipePage recipes = {recipe}/>);
+      
+      wrapper.instance().nextRecipe();
+      var state = wrapper.instance().state;
+      expect(JSON.stringify(state)).toEqual(JSON.stringify({recipeIndex: 1}));
+
+      wrapper.instance().previousRecipe();
+      var state = wrapper.instance().state;
+      expect(JSON.stringify(state)).toEqual(JSON.stringify({recipeIndex: 0}));
+
+      wrapper.instance().previousRecipe();
+      var state = wrapper.instance().state;
+      expect(JSON.stringify(state)).toEqual(JSON.stringify({recipeIndex: 0}));
+    })
+  })
+})

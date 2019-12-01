@@ -11,7 +11,7 @@ class Recipe extends Component {
   
     render() {
       const {recipe} = this.props;
-      const images = undefined;
+      var images = undefined;
       if (recipe != undefined) {
        images = getImages(recipe.field_images);
       }
