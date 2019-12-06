@@ -12,6 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     ```
     REACT_APP_RECIPE_URL = the_recipe_url
     REACT_APP_RECIPE_IMAGE_ROOT = the_root_of_recipe_images
+    REACT_APP_HOMEPAGE_URL = the_url_of_the_homepage
     ```
 3) Install packages
 

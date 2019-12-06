@@ -20,7 +20,7 @@ class MainContent extends Component {
       )
     }
     componentDidMount() {
-      fetch("http://gtest.dev.wwbtc.com/json/page?_format=json")
+      fetch(process.env.REACT_APP_RECIPE_URL)
         .then(response => response.json())
         .then(result => this.setState({homepage: result}))
         .catch(error => console.log(error));
