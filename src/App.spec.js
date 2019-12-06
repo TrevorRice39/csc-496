@@ -8,6 +8,7 @@ import Recipe, {getImages} from './components/RecipePage/Recipe/Recipe.js';
 import RecipePage from './components/RecipePage/RecipePage.js';
 import { tsExternalModuleReference } from '@babel/types';
 import ShallowRenderer from 'react-test-renderer/shallow';
+import MainContent from './components/Homepage/MainContent/MainContent.js';
 
 
 
@@ -157,3 +158,21 @@ describe('App', () => {
     })
   })
 })
+
+describe('Homepage', () => {
+  describe('main content', () => {
+    it('should fetch data', () => {
+      const mockSuccessResponse = {};
+      const mockJsonPromise = Promise.resolve(mockSuccessResponse); // 2
+      const mockFetchPromise = Promise.resolve({ // 3
+        json: () => mockJsonPromise,
+      });
+      jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise); // 4
+
+      const wrapper = mount(<MainContent />);
+      expect(global.fetch).toHaveBeenCalledTimes(1);
+      expect(global.fetch).toHaveBeenCalledWith(process.env.REACT_APP_HOMEPAGE_URL);
+  
+    })
+  })
+});

@@ -20,7 +20,7 @@ class MainContent extends Component {
       )
     }
     componentDidMount() {
-      fetch(process.env.REACT_APP_RECIPE_URL)
+      fetch(process.env.REACT_APP_HOMEPAGE_URL)
         .then(response => response.json())
         .then(result => this.setState({homepage: result}))
         .catch(error => console.log(error));

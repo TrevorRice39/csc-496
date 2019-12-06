@@ -6,12 +6,17 @@ class RecipeSummaries extends Component {
         return (
         <div>
             <h1>A few recipes!</h1>
-            {recipes.map(recipe =>
-            <div>
-            <h4>{recipe.title}:</h4>
-            <p className = "recipe_para" dangerouslySetInnerHTML={{ __html: recipe.field_summary }} />
-            </div>
-            )}
+            {recipes != undefined ?
+            [(recipes.map(recipe =>
+                <div>
+                <h4>{recipe.title}:</h4>
+                <p className = "recipe_para" dangerouslySetInnerHTML={{ __html: recipe.field_summary }} />
+                </div>
+                ))]
+                :
+                undefined
+            }
+            
         </div>
         )
     }
